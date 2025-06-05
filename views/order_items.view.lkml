@@ -215,7 +215,7 @@ view: order_items {
   dimension: days_since_sold {
     description: "Days since the order item was sold"
     label: "Days Since Sold"
-    hidden: yes
+    # hidden: yes
     sql: TIMESTAMP_DIFF(${created_raw},CURRENT_TIMESTAMP(), DAY) ;;
   }
 
