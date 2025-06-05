@@ -1,4 +1,4 @@
-connection: "default_bigquery_connection"
+connection: "sample_bigquery_connection"
 
 include: "/views/*.view.lkml"                # include all views in the views/ folder in this project
 # include: "/**/*.view.lkml"                 # include all views in this project
@@ -21,6 +21,16 @@ explore: order_items {
     relationship: many_to_one
     sql_on: ${order_items.user_id} = ${users.id} ;;
   }
+
+  join: reviews_with_comments {
+    relationship: one_to_one
+    sql_on: ${reviews_with_comments.order_item_id} =  ${order_items.id};;
+  }
+
+  # join: reviews_probs {
+  #   relationship: one_to_one
+  #   sql_on: ${reviews_probs.id} = ${order_items.id} ;;
+  # }
 
 
   join: products {
